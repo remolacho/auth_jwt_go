@@ -7,9 +7,8 @@ This gem allows you to make identifications for your microservices and create th
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'auth_jwt_go', '~> 0.1.0'
+  gem 'auth_jwt_go', '~> 0.1.0'
 ```
-
 And then execute:
 
     $ bundle install
