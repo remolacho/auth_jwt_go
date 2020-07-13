@@ -14,7 +14,5 @@
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.16.2, RVM: ruby-2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jwt (v2.2.1, RVM: ruby-2.3.7) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, RVM: ruby-2.3.7) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pry-byebug (v3.6.0, RVM: ruby-2.3.7) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v12.3.2, RVM: ruby-2.3.7) [gem]" level="application" />
   </component>
 </module>
