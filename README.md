@@ -7,6 +7,7 @@ This gem allows you to make identifications for your microservices and create th
 Add this line to your application's Gemfile:
 
 ```ruby
+  gem 'jwt'
   gem 'auth_jwt_go', '~> 0.1.0'
 ```
 And then execute:
@@ -51,6 +52,9 @@ Or install it yourself as:
        before_action :authorized_user # Identify the user based on the jwt for login
      end
     
+   5- rspec add in rspec_rails
+       config.include RequestHelpers, type: :controller
+ 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/auth_jwt.
