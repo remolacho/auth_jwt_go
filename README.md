@@ -55,6 +55,8 @@ Or install it yourself as:
    5- rspec add in rspec_rails
        config.include RequestHelpers, type: :controller
  
+## include helper current_user 
+ 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/auth_jwt.
+Bug reports and pull requests are welcome on GitHub at https://github.com/remolacho/auth_jwt_go.
