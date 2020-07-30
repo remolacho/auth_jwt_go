@@ -21,6 +21,12 @@ module AuthJwtGo
     render json: { message: "The error was #{e.to_s}" }, status: 500
   end
 
+  def authorized_tenant
+    { message: 'The user has not token active', status: 403 } unless logged_in?
+  rescue StandardError => e
+    { message: e.to_s, status: 500 }
+  end
+
   def authorized_app
     unless AuthJwtGo::secret_key_api.eql?(auth_client)
       render json: {message: 'The app has not access' }, status: 401
