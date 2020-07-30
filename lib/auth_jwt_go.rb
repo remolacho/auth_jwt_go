@@ -21,16 +21,20 @@ module AuthJwtGo
     render json: { message: "The error was #{e.to_s}" }, status: 500
   end
 
-  def authorized_tenant
-    { message: 'The user has not token active', status: 403 } unless logged_in?
-  rescue StandardError => e
-    { message: e.to_s, status: 500 }
-  end
-
   def authorized_app
     unless AuthJwtGo::secret_key_api.eql?(auth_client)
       render json: {message: 'The app has not access' }, status: 401
     end
+  end
+
+  def decoded_tenant(http_request)
+    return {message: 'The jwt can not decode!!!!', error: true} unless http_request.env["HTTP_AUTHORIZATION"]
+    token = http_request.env["HTTP_AUTHORIZATION"].split(' ')[1]
+    decode = JWT.decode(token, AuthJwtGo::secret_key_jwt, true, { algorithm: AuthJwtGo::algorithm || 'HS256'} )
+    return {message: 'The jwt can not decode!!!!', error: true} unless decode
+    AuthJwtGo::AuthorizedUser.new(decode[0])
+  rescue JWT::DecodeError
+    nil
   end
 
   def encode_token(payload)
