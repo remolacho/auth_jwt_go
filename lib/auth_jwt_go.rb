@@ -27,6 +27,16 @@ module AuthJwtGo
     end
   end
 
+  def decoded_tenant(http_request)
+    return {message: 'The jwt can not decode!!!!', error: true} unless http_request.env["HTTP_AUTHORIZATION"]
+    token = http_request.env["HTTP_AUTHORIZATION"].split(' ')[1]
+    decode = JWT.decode(token, AuthJwtGo::secret_key_jwt, true, { algorithm: AuthJwtGo::algorithm || 'HS256'} )
+    return {message: 'The jwt can not decode!!!!', error: true} unless decode
+    AuthJwtGo::AuthorizedUser.new(decode[0])
+  rescue JWT::DecodeError
+    nil
+  end
+
   def encode_token(payload)
     return  { message: 'The payload is not present'} unless payload.present?
     {jwt: JWT.encode(payload, AuthJwtGo::secret_key_jwt, AuthJwtGo::algorithm || 'HS256')}
