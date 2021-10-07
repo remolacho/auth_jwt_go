@@ -1,8 +1,9 @@
 module AuthJwtGo
   class AuthorizedUser
     def initialize(fields)
-      fields.each do |key, value|
-        self.define_singleton_method(key.to_s.underscore) { return value }
+      fields.each do |k, v|
+        instance_variable_set("@#{k.to_s.underscore}", v)
+        self.class.send(:attr_accessor, k.to_s.underscore)
       end
     end
   end
