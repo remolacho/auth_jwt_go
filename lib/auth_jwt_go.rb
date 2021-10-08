@@ -3,7 +3,7 @@ require 'auth_jwt_go/authorized_user'
 
 module AuthJwtGo
   class << self
-    mattr_accessor :secret_key_api,
+    attr_accessor  :secret_key_api,
                    :secret_key_jwt,
                    :algorithm,
                    :class_name_model,
