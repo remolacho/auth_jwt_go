@@ -1,4 +1,8 @@
-require "bundler/setup"
+begin
+  require "bundler/setup"
+rescue StandardError, LoadError
+  # Allows running specs without bundler (e.g. `rspec -I lib`)
+end
 require "auth_jwt_go"
 
 RSpec.configure do |config|
