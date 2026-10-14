@@ -5,5 +5,5 @@ gemspec
 
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
-gem 'jwt'
 gem "pry-byebug"
+gem "activesupport"
